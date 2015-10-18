@@ -178,3 +178,19 @@ You can get the running config file at any time, by accessing `http://127.0.0.1:
 To start it at boot, just run `/path/to/netdata.git/netdata.start` from your `/etc/rc.local` or equivalent.
 
 You can stop and start netdata at any point. Netdata saves on exit its round robbin database to `cache/` so that it will continue from where it stopped the last time. 
+
+## Docker
+
+# Todo: These are rough notes only for now, but will evolve into clear and easy to use commands
+
+## Build
+sudo docker build -t netdata:0.0.1 .
+
+### Non Daemon mode
+sudo docker run -it --rm --name netdata -v /proc:/host/proc:ro -v /sys:/host/sys:ro -p 19999:19999 netdata:0.0.1 bash
+'./netdata.start' '-ch /host'
+
+sudo docker run -it --rm --name netdata -v /proc:/host/proc:ro -v /sys:/host/sys:ro -p 19999:19999 netdata:0.0.1
+
+### Daemon mode
+sudo docker run -d --name netdata -v /proc:/host/proc:ro -v /sys:/host/sys:ro -p 19999:19999 netdata:0.0.1 '-ch /host'
