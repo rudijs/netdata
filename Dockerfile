@@ -10,7 +10,6 @@ RUN \
 WORKDIR /opt
 
 ENV APT_REFRESHED_AT 2015-10-18.1
-
 RUN git clone https://github.com/ktsaou/netdata.git
 
 WORKDIR /opt/netdata
